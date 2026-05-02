@@ -496,8 +496,6 @@ class Handler(BaseHTTPRequestHandler):
             uploaded_text = extract_file_text(form["assignmentFile"] if "assignmentFile" in form else None)
             pasted_text = str(form.getvalue("assignmentText") or "")
             assignment_text = uploaded_text.strip() or pasted_text.strip()
-            if not student_courses:
-                return self.send_json({"error": "Add at least one completed course before analysis."}, 400)
             if not target_course:
                 return self.send_json({"error": "Select a valid ANU COMP course to analyze."}, 400)
             if not assignment_text.strip():

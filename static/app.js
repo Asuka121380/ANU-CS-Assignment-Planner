@@ -216,7 +216,7 @@ function renderAnalysis() {
     el.dropSubtitle.textContent = "PDF text extraction works for text-based PDFs.";
   }
   const hasAssignmentInput = state.file || assignmentText.length > 0;
-  const canAnalyze = state.assignmentCourse && hasAssignmentInput && state.studentCourses.length && !state.loading;
+  const canAnalyze = state.assignmentCourse && hasAssignmentInput && !state.loading;
   el.analyzeButton.disabled = !canAnalyze;
   el.analyzeButton.textContent = state.loading ? "Analyzing..." : "Generate estimate";
   el.analyzeHint.textContent = getAnalyzeHint(hasAssignmentInput);
@@ -259,7 +259,7 @@ function addCourseMark() {
 async function analyze() {
   const assignmentText = getAssignmentText();
   const hasAssignmentInput = state.file || assignmentText.length > 0;
-  if (!state.assignmentCourse || !hasAssignmentInput || !state.studentCourses.length) return;
+  if (!state.assignmentCourse || !hasAssignmentInput) return;
   state.loading = true;
   hideError();
   renderAnalysis();
@@ -303,8 +303,8 @@ function getAssignmentText() {
 function getAnalyzeHint(hasAssignmentInput) {
   if (state.loading) return "Analyzing the assignment estimate...";
   if (!state.assignmentCourse) return "Choose Analyze assignment from a course card first.";
-  if (!state.studentCourses.length) return "Add at least one completed course and mark first.";
   if (!hasAssignmentInput) return "Upload a file or paste assignment text first.";
+  if (!state.studentCourses.length) return "Ready to generate an estimate without prior course background.";
   return "Ready to generate an estimate.";
 }
 
