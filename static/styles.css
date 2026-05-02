@@ -406,6 +406,12 @@ button {
   background: #f0f7ef;
 }
 
+.drop-zone.dragging {
+  border-color: #315d47;
+  background: #eef7eb;
+  box-shadow: 0 0 0 2px rgba(49, 93, 71, 0.12);
+}
+
 .drop-zone input {
   position: absolute;
   width: 1px;

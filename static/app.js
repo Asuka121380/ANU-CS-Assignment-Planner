@@ -50,9 +50,23 @@ el.assignmentText.addEventListener("input", () => {
   state.assignmentText = el.assignmentText.value;
   renderAnalysis();
 });
-el.dropZone.addEventListener("dragover", (event) => event.preventDefault());
+
+["dragenter", "dragover", "drop"].forEach((eventName) => {
+  window.addEventListener(eventName, (event) => {
+    event.preventDefault();
+  });
+});
+
+el.dropZone.addEventListener("dragover", (event) => {
+  event.preventDefault();
+  el.dropZone.classList.add("dragging");
+});
+el.dropZone.addEventListener("dragleave", () => {
+  el.dropZone.classList.remove("dragging");
+});
 el.dropZone.addEventListener("drop", (event) => {
   event.preventDefault();
+  el.dropZone.classList.remove("dragging");
   state.file = event.dataTransfer.files[0] || null;
   renderAnalysis();
 });
