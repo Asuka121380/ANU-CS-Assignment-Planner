@@ -35,7 +35,9 @@ const el = {
   modalSubtitle: document.querySelector("#modalSubtitle"),
   markInput: document.querySelector("#markInput"),
   cancelModal: document.querySelector("#cancelModal"),
-  saveMark: document.querySelector("#saveMark")
+  saveMark: document.querySelector("#saveMark"),
+  guideBackdrop: document.querySelector("#guideBackdrop"),
+  closeGuide: document.querySelector("#closeGuide")
 };
 
 el.courseSearch.addEventListener("input", () => {
@@ -81,6 +83,9 @@ el.modalBackdrop.addEventListener("mousedown", (event) => {
   if (event.target === el.modalBackdrop) closeModal();
 });
 el.saveMark.addEventListener("click", addCourseMark);
+el.closeGuide.addEventListener("click", () => {
+  el.guideBackdrop.classList.add("hidden");
+});
 
 searchCourses();
 renderBackground();

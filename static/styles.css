@@ -544,6 +544,71 @@ button {
   padding: 0 12px;
 }
 
+.guide-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgba(12, 18, 14, 0.62);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.guide-modal {
+  width: min(720px, 100%);
+  max-height: min(760px, calc(100vh - 40px));
+  overflow: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+}
+
+.guide-header {
+  margin-bottom: 18px;
+}
+
+.guide-header span {
+  color: #315d47;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.guide-header h2 {
+  margin: 6px 0 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.guide-steps {
+  display: grid;
+  gap: 10px;
+}
+
+.guide-steps div {
+  border: 1px solid #dfe6e1;
+  border-radius: 8px;
+  background: #f7f9f7;
+  padding: 12px;
+}
+
+.guide-steps strong {
+  display: block;
+  color: #17281f;
+}
+
+.guide-steps p {
+  margin: 5px 0 0;
+  color: #5f6d64;
+  line-height: 1.45;
+}
+
+.guide-action {
+  width: 100%;
+  margin-top: 18px;
+}
+
 .modal-actions {
   display: flex;
   justify-content: flex-end;
