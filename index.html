@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANU CS Assignment Analyse Helper</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <div>
+            <h1>ANU CS Assignment Analyse Helper</h1>
+            <p>Assignment workload estimates</p>
+          </div>
+        </div>
+
+        <section class="side-section">
+          <div class="section-title">Student background</div>
+          <div id="backgroundList" class="background-list"></div>
+        </section>
+
+        <section class="side-section history-section">
+          <div class="section-title">
+            History
+            <button id="clearHistory" class="icon-button subtle" title="Clear history">Clear</button>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <div class="top-bar">
+          <h2>Estimate assignment effort from your ANU CS background</h2>
+          <p>Search a course, add it as background, or analyze an assignment for that course.</p>
+        </div>
+
+        <section class="search-panel">
+          <div class="search-box">
+            <span>Search</span>
+            <input id="courseSearch" placeholder="Search courses, e.g. COMP1110, algorithms, databases" />
+          </div>
+          <div id="courseGrid" class="course-grid"></div>
+        </section>
+
+        <section class="analysis-panel">
+          <div class="analysis-header">
+            <div>
+              <h3 id="analysisTitle">Assignment analysis</h3>
+              <p id="analysisSubtitle">Choose Analyze assignment from a course card.</p>
+            </div>
+          </div>
+
+          <label id="dropZone" class="drop-zone">
+            <input id="assignmentFile" type="file" accept=".txt,.pdf,text/plain,application/pdf" />
+            <strong id="dropTitle">Drop or choose an assignment PDF/TXT file</strong>
+            <span id="dropSubtitle">PDF text extraction works for text-based PDFs.</span>
+          </label>
+
+          <div class="text-entry">
+            <label for="assignmentText">Or paste assignment text</label>
+            <textarea
+              id="assignmentText"
+              placeholder="Paste the assignment description, rubric, or task brief here..."
+            ></textarea>
+          </div>
+
+          <div id="errorBox" class="error-box hidden"></div>
+          <button id="analyzeButton" class="primary-action" disabled>Generate estimate</button>
+          <p id="analyzeHint" class="analyze-hint"></p>
+        </section>
+
+        <section id="reportPanel" class="report-panel hidden"></section>
+      </main>
+    </div>
+
+    <div id="modalBackdrop" class="modal-backdrop hidden">
+      <div class="modal">
+        <h3 id="modalTitle">Add course</h3>
+        <p id="modalSubtitle"></p>
+        <label>
+          Mark
+          <input id="markInput" type="number" min="0" max="100" placeholder="0-100" />
+        </label>
+        <div class="modal-actions">
+          <button id="cancelModal" class="ghost-button">Cancel</button>
+          <button id="saveMark" class="primary-action compact">Add course</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
